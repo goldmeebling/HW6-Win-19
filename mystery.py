@@ -72,12 +72,18 @@ def find_phoneNumbers(filename):
     final_list = []
     lines = read_file(filename)
     reg = "\d{3}[\S|\s]\d{3}[\S|\s]\d+"
+    reg1 = "\(\d{3}\)[\S|\s]\d{3}[\S|\s]\d+"
     for line in lines:
         expr = re.findall(reg, line)
+        expr2 = re.findall(reg1, line)
 
         if expr != []:
             for match in expr:
                 final_list += expr
+        
+        if expr2 != []:
+            for match in expr2:
+                final_list += expr2
     return final_list
 
 ## Extra credit
