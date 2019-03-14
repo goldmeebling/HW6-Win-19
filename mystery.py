@@ -24,26 +24,30 @@ def read_file(filename):
 
             
 def find_dates(filename):
-    """ Return a list of valid dates from the text file. 
+    """ Return a list of valid dates from the text file. dsdsds
     
         filename -- the name of the file to read from
         return -- the list of valid dates found in the file
+        test
     """
-    pass
     
     # initialize a list of dates to an empty list
-    
+    final_list = []
     # read the lines from the file into a list
-    
+    lines = read_file(filename)
     # define the regular expression
-    
+    reg = "\d{1,2}[.|/|-]\d{1,2}[.|/|-]\d{2,4}"
     # loop through the list of lines from the file
-    
+    for x in lines:
     	# get the list of items that match the regular expression from the current line
-    
+        expr = re.findall(reg, x)
     	# add the list of items that matched to the list of dates found so far
-    
+        if expr != []:
+            for y in expr:
+                final_list += expr
     # return the list of dates
+ 
+    return final_list
 
 
 def find_emails(filename):
@@ -70,8 +74,8 @@ def count_word(filename, word):
 ## This function is for grading and debugging purposes
 ## statistics function reports your score based on the number of matches you got correct. 
 def statistics(list1, list2):
-    #print("Function output: ",list1)
-    #print("Actual output: ", list2)
+    print("Function output: ",list1)
+    print("Actual output: ", list2)
     matches = set(list2).intersection(set(list1)) 
     score = (len(matches)/len(list2))*20
     if len(matches)==len(list2):
