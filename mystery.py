@@ -24,11 +24,10 @@ def read_file(filename):
 
             
 def find_dates(filename):
-    """ Return a list of valid dates from the text file. dsdsds
+    """ Return a list of valid dates from the text file. 
     
         filename -- the name of the file to read from
         return -- the list of valid dates found in the file
-        test
     """
     
     # initialize a list of dates to an empty list
@@ -52,7 +51,19 @@ def find_dates(filename):
 
 def find_emails(filename):
     """ Return a list of valid emails in the text file with the given filename """
-    pass
+    final_list = []
+    lines = read_file(filename)
+    reg = "\w\S+@\S+.\w"
+    for x in lines:
+        expr = re.findall(reg, x)
+
+        if expr != []:
+            for match in expr:
+                final_list += expr
+
+    return final_list
+
+
 
 
 def find_phoneNumbers(filename):
