@@ -53,13 +53,14 @@ def find_emails(filename):
     """ Return a list of valid emails in the text file with the given filename """
     final_list = []
     lines = read_file(filename)
-    reg = "\w\S+@\S+.\w"
+    reg = "\w\S+@\S+\w"
     for x in lines:
         expr = re.findall(reg, x)
 
         if expr != []:
             for match in expr:
                 final_list += expr
+        #after every match, it clears
 
     return final_list
 
@@ -68,7 +69,16 @@ def find_emails(filename):
 
 def find_phoneNumbers(filename):
     """ Return a list of valid phone numbers in the text file with the given filename """
-    pass
+    final_list = []
+    lines = read_file(filename)
+    reg = "\d{3}[\S|\s]\d{3}[\S|\s]\d+"
+    for line in lines:
+        expr = re.findall(reg, line)
+
+        if expr != []:
+            for match in expr:
+                final_list += expr
+    return final_list
 
 ## Extra credit
 def count_word(filename, word):
